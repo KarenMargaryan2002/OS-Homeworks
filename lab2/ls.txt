@@ -1,0 +1,14 @@
+$RECYCLE.BIN/
+C++/
+CV/
+Computational Vision/
+LDPlayer/
+Notebooks_Sales_Analysis_Project/
+Program Files/
+Program Files (x86)/
+ProgramData/
+Python/
+System Volume Information/
+Text_Recognition_and_Translate_Project/
+nkar/
+ԻԿՄ Դասագրքեր/

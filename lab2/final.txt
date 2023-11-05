@@ -1,0 +1,24 @@
+Os
+lab2
+file1
+File tabs have been enhanced to make split views effortless,
+with support throughout the interface and built-in commands.
+The side bar, tab bar, Goto Anything, Goto Definition, auto 
+complete and more have all been tweaked to make code navigation 
+easier and more intuitive than ever.
+Os
+lab2
+file1
+The Default and Adaptive themes have been 
+refreshed with new tab styles and inactive 
+pane dimming. Themes and Color Schemes support 
+auto dark-mode switching. The Adaptive theme on 
+Windows and Linux now features custom title bars.
+Os
+lab2
+file1
+Support for one of the most popular 
+new programming languages is now shipped 
+by default. Utilize all of the smart 
+syntax-based features of Sublime Text 
+within the modern JavaScript ecosystem.

@@ -1,0 +1,8 @@
+Os
+lab2
+file1
+Support for one of the most popular 
+new programming languages is now shipped 
+by default. Utilize all of the smart 
+syntax-based features of Sublime Text 
+within the modern JavaScript ecosystem.

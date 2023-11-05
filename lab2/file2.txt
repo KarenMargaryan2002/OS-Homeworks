@@ -1,0 +1,8 @@
+Os
+lab2
+file1
+The Default and Adaptive themes have been 
+refreshed with new tab styles and inactive 
+pane dimming. Themes and Color Schemes support 
+auto dark-mode switching. The Adaptive theme on 
+Windows and Linux now features custom title bars.

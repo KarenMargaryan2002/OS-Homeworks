@@ -1,0 +1,214 @@
+Առաջադրանքներ
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~
+    $ cd Desktop/lab2
+
+1. Կատարել հետևյալ հրամանները, բացատրել տարբերությունը․
+cat > file1
+cat file1
+cat < file1
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat > file1.txt
+        OS
+        Lab2
+        barev
+        barev2
+        barev3
+        barev4
+        barev5
+        barev6
+        hajox
+        // տվյալները կարդում է STDIN հոսքից՝ մինչև EOF (End of File) սիմվոլի հանդիպելը (Ctrl + D)։
+        // և գրում է file1.txt
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat file1.txt
+        OS
+        Lab2
+        barev
+        barev2
+        barev3
+        barev4
+        barev5
+        barev6
+        hajox
+        //cat հրամանը կարդում է մեկ կամ մի քանի ֆայլեր և արտածում է դրանց պարունակությունը։
+
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat < file1.txt
+        OS
+        Lab2
+        barev
+        barev2
+        barev3
+        barev4
+        barev5
+        barev6
+        hajox
+        // Այս 2 մեթոդների տարբերությունն այն է, որ այս դեպքում cat հրամանին հայտնի չէ
+        // ֆայլի անունը․ այն տվյալները կարդում է STDIN հոսքից, որը վերահասցեավորված է դեպի
+        // ֆայլը։ Նախորդ դեպքում հրամանը տվյալները կարդում է անմիջապես ֆայլից։
+
+
+2. Ստեղծել որոշակի պարունակությամբ 3 տեքստային ֆայլ՝ file1.txt, file2.txt, file3.txt։ Այս
+ֆայլերի պարունակությունը կցել միմյանց և գրել նոր ֆայլում՝ final.txt։
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat > file1.txt
+        Os
+        lab2
+        file1
+        File tabs have been enhanced to make split views effortless,
+        with support throughout the interface and built-in commands.
+        The side bar, tab bar, Goto Anything, Goto Definition, auto
+        complete and more have all been tweaked to make code navigation
+        easier and more intuitive than ever.
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat > file2.txt
+        Os
+        lab2
+        file1
+        The Default and Adaptive themes have been
+        refreshed with new tab styles and inactive
+        pane dimming. Themes and Color Schemes support
+        auto dark-mode switching. The Adaptive theme on
+        Windows and Linux now features custom title bars.
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat > file3.txt
+        Os
+        lab2
+        file1
+        Support for one of the most popular
+        new programming languages is now shipped
+        by default. Utilize all of the smart
+        syntax-based features of Sublime Text
+        within the modern JavaScript ecosystem.
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat file1.txt file2.txt file3.txt > final.txt
+
+
+3. Ցուցադրել /home/student դիրեկտորիայում տեքստային ֆայլերի քանակը։
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ find /home/student -type f -name "*.txt" | wc -l
+        5
+
+    // find *.txt բոլոր տեքստային ֆայլերը տրված դիրեկտորիայում
+    // wc -l տողերի քանակը
+
+
+4. Սորտավորել file1.txt, file2.txt, file3.txt ֆայլերի պարունակությունը և գրել նոր ֆայլում։
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat file1.txt file2.txt file3.txt | sort > sorted.txt
+
+
+5. Արտածել /home/student դիրեկտորիայի առաջին 15 ֆայլերը՝ դասավորված նվազման
+կարգով ըստ ֆայլի ծավալի։
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ ls -l /c/Users/karen/Downloads/ | sort -r -k 5 | head -15
+        -rwxr-xr-x 1 Karen 197609 102577424 May  8 20:04 vc-free.exe*
+        -rwxr-xr-x 1 Karen 197609  61225232 Jul 14 01:42 Git-2.41.0.2-64-bit.exe*
+        -rwxr-xr-x 1 Karen 197609  60631576 Jun 27 03:06 Git-2.41.0-64-bit.exe*
+        -rw-r--r-- 1 Karen 197609   4910933 Sep 22 03:31 Բոլիբեկյան.pdf
+        -rw-r--r-- 1 Karen 197609   2490759 Jun 29 02:39 tesseract-main.zip
+        -rw-r--r-- 1 Karen 197609   1998508 Oct 15 00:14 IMG_2848.jpg
+        -rw-r--r-- 1 Karen 197609   1254244 Oct 15 00:14 IMG_2851.jpg
+        -rw-r--r-- 1 Karen 197609   1243734 Oct 15 00:14 IMG_2849.jpg
+        -rw-r--r-- 1 Karen 197609   1097842 Oct 11 00:43 Hrayr 001 (1).pdf
+        -rw-r--r-- 1 Karen 197609   1095671 Jul  6 00:20 2part.pdf
+        -rw-r--r-- 1 Karen 197609   1038995 Jul  5 17:51 Karinka (2).docx
+        -rw-r--r-- 1 Karen 197609   1038793 Jul  5 17:17 Karinka (1).docx
+        -rw-r--r-- 1 Karen 197609    976431 Oct 15 00:14 IMG_2847_(1).jpg
+        -rw-r--r-- 1 Karen 197609    656299 Aug 21 01:52 դասացուցակ.pdf
+        -rw-r--r-- 1 Karen 197609    655983 Sep 17 19:19 Դասացուցակ Python .pdf
+
+    // Ուրիշ դիրեկտորիայում եմ Կատարել
+    // sort -r -k 5 
+    // -r Սորտավորել հակառակ կարգով
+    // -k 5 ըստ 5-րդ սյունի
+
+
+6. Արտածել /home/student դիրեկտորիայի ֆայլերի ցուցակը, միաժամանակ այն
+տեղադրելով ls.txt ֆայլում։
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ ls /e/ > ls.txt | ls -l /e/
+        total 28
+        drwxr-xr-x 1 Karen 197609 0 Aug 29  2022 '$RECYCLE.BIN'/
+        drwxr-xr-x 1 Karen 197609 0 Oct 27 02:36  C++/
+        drwxr-xr-x 1 Karen 197609 0 May 17 21:56  CV/
+        drwxr-xr-x 1 Karen 197609 0 Feb  6  2023 'Computational Vision'/
+        drwxr-xr-x 1 Karen 197609 0 Jul 29 02:46  LDPlayer/
+        drwxr-xr-x 1 Karen 197609 0 Nov  5 01:23  Notebooks_Sales_Analysis_Project/
+        drwxr-xr-x 1 Karen 197609 0 Jul 14 01:43 'Program Files'/
+        drwxr-xr-x 1 Karen 197609 0 Sep  3  2022 'Program Files (x86)'/
+        drwxr-xr-x 1 Karen 197609 0 Sep  3  2022  ProgramData/
+        drwxr-xr-x 1 Karen 197609 0 Nov  4 23:51  Python/
+        drwxr-xr-x 1 Karen 197609 0 Sep  1  2022 'System Volume Information'/
+        drwxr-xr-x 1 Karen 197609 0 Jul 14 01:39  Text_Recognition_and_Translate_Project/
+        drwxr-xr-x 1 Karen 197609 0 Aug 30  2022  nkar/
+        drwxr-xr-x 1 Karen 197609 0 Nov  5 17:01 'ԻԿՄ Դասագրքեր'/
+
+
+7. Օգտագործելով tr հրամանը՝ գաղտնագրել "secret text" տողը ROT13 ալգորիթմով։
+Վերծանել գաղտնագրված հաղորդագրությունը։
+
+    ROT13 algorithm
+    Input	ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+    Output	NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ echo "secret text" | tr a-m,n-z n-z,a-m
+        frperg grkg
+    
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ echo "frperg grkg" | tr n-z,a-m a-m,n-z
+        secret text
+
+
+8. Ստեղծել նոր ֆայլ՝ home.txt, հետևյալ պարունակությամբ․
+Student’s home directory is {home_dir}.
+sed հրամանի միջոցով փոխարինել {home_dir} հատվածը /home/student-ով։
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat > home.txt
+        Student’s home directory is {home_dir}.
+    
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ sed -i 's/{home_dir}/\/home\/student/' home.txt
+
+    // -i պարամետրը արդյունքները ֆայլում գրանցելու համար
+
+
+9. Ստեղծել ֆայլ, որն ունի առնվազն 5 տող պարունակություն՝ file4.txt։ Արտածել 2-4-րդ
+տողերը։
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat > file4.txt
+        barev1
+        barev2
+        barev3
+        barev4
+        barev5
+        barev6
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ cat file4.txt | sed -n '2,4p'
+        barev2
+        barev3
+        barev4
+
+10. Ջնջել file4.txt ֆայլի 2-4-րդ տողերը։
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab2
+    $ sed -i '2,4d' file4.txt
+
+    // -i պարամետրը արդյունքները ֆայլում գրանցելու համար
+    // d Ջնջել տվյալ տողը

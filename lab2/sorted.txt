@@ -1,0 +1,24 @@
+File tabs have been enhanced to make split views effortless,
+Os
+Os
+Os
+Support for one of the most popular 
+The Default and Adaptive themes have been 
+The side bar, tab bar, Goto Anything, Goto Definition, auto 
+Windows and Linux now features custom title bars.
+auto dark-mode switching. The Adaptive theme on 
+by default. Utilize all of the smart 
+complete and more have all been tweaked to make code navigation 
+easier and more intuitive than ever.
+file1
+file1
+file1
+lab2
+lab2
+lab2
+new programming languages is now shipped 
+pane dimming. Themes and Color Schemes support 
+refreshed with new tab styles and inactive 
+syntax-based features of Sublime Text 
+with support throughout the interface and built-in commands.
+within the modern JavaScript ecosystem.

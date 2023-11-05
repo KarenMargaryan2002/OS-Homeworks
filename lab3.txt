@@ -1,7 +1,7 @@
 Լաբորատոր աշխատանք 3
 Առաջադրանքներ
 
-s /bin > dirlist-bin.txt
+ls /bin > dirlist-bin.txt
 ls /sbin > dirlist-sbin.txt
 
 1. Ցուցադրել /etc դիրեկտորիայի բոլոր ֆայլերը, որոնց անվան մեջ թվանշան կա։

@@ -1,0 +1,194 @@
+Լաբորատոր աշխատանք 5
+Առաջադրանքներ
+
+1. Ստեղծել կամայական արժեքով փոփոխական՝ str: Ցուցադրել հետևյալ հրամանների
+աշխատանքի արդյունքի տարբերությունը.
+echo $str2
+echo ${str}2
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ touch 1.sh
+
+    // 1.sh 
+    #!/bin/bash
+    str='barev'
+    echo $str2
+    echo ${str}2
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ ./1.sh
+
+        barev2
+    // str2 փոփոխական չկա
+
+
+2. Արտածել հետևյալ արտահայտության արժեքը․ (5^2∗4)/10
+    
+    // 2.sh 
+    #!/bin/bash
+    echo $(((5**2 * 4) / 10 ))
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ ./2.sh
+        10
+
+
+3. Ցուցադրել հետևյալ հրամանների աշխատանքի արդյունքի տարբերությունը․
+echo "The balance for user $USER is: $5.00"
+echo "The balance for user $USER is: \$5.00"
+
+    // 3.sh 
+    #!/bin/bash
+    echo "The balance for user $USER is: $5.00"
+    echo "The balance for user $USER is: \$5.00"
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ ./3.sh
+        The balance for user  is: .00
+        The balance for user  is: $5.00
+    // $USER, $5 անուններով փոփոխականներ չկան
+
+
+4. Ցուցադրել հետևյալ հրամանների աշխատանքի արդյունքի տարբերությունը․
+echo '$USER $((2 + 2)) $(ls)'
+echo "$USER $((2 + 2)) $(ls)"
+
+    // 4․sh
+    #!/bin/bash
+    echo '$USER $((2 + 2)) $(ls)'
+    echo "$USER $((2 + 2)) $(ls)"
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ ./4.sh
+        $USER $((2 + 2)) $(ls)
+        4 1.sh
+        10.sh
+        2.sh
+        3.sh
+        4.sh
+        5.sh
+        6.sh
+        7.sh
+        8.sh
+        9.sh
+    // ""-ի մեջ գրելու դեպքում $-ից հետո գրվածները փոփոխականներ են
+    // ''-ի միջինը տեքստ է հասկանում
+
+
+5. Առանձին տողերում արտածել ընթացիկ դիրեկտորիան և այնտեղ առկա տեքստային
+ֆայլերի քանակը։ Օգտագործել Here document:
+
+    // 5.sh
+    cat <<EOF
+    Current Directory: $(pwd)
+    Number of Files: $(ls | wc -l)
+    EOF
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ ./5.sh
+        Current Directory: /c/Users/karen/Desktop/lab5
+        Number of Files: 10
+
+
+6. Գրել 2 թվեր գումարող ֆունկցիա։ Թվերը ֆունկցիային փոխանցել որպես
+արգումենտներ։
+
+    // 6.sh
+    add_numbers() {
+        sum=$(( $1 + $2 ))
+        echo "The sum of $1 and $2 is: $sum"
+    }
+
+    add_numbers 4 51
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ ./6.sh
+        The sum of 4 and 51 is: 55
+
+
+7. Գրել ֆունկցիա, որը որպես արգումենտ կստանա դիրեկտորիայի անվանումը և
+կարտածի այնտեղ առկա ֆայլերի քանակը։
+
+    // 7.sh
+    count_files_in_directory() {
+        dir="$1"
+        num_files=$(ls "$dir" | wc -l)
+        echo "Number of files in $dir: $num_files"
+    }
+
+    count_files_in_directory "/c/Users/karen/Desktop/lab5"
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ ./7.sh
+        Number of files in /c/Users/karen/Desktop/lab5: 10
+
+
+8. Գրել սկրիպտ, որում նոր ստեղծված ֆայլի համար ստուգել, թե արդյոք այն ունի
+կարդալու / գրելու / կատարելու թույլտվություն, և արտածել համապատասխան
+հաղորդագրություն։
+
+    // 8.sh
+    filename="file.txt"
+
+    if [ -e "$filename" ]; then
+        echo "File $filename exists."
+
+        if [ -r "$filename" ]; then
+            echo "File $filename has read permission."
+        fi
+
+        if [ -w "$filename" ]; then
+            echo "File $filename has write permission."
+        fi
+
+        if [ -x "$filename" ]; then
+            echo "File $filename has execute permission."
+        fi
+    else
+        echo "File $filename does not exist."
+    fi
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ ./8.sh
+        File file.txt exists.
+        File file.txt has read permission.
+        File file.txt has write permission.
+
+
+9. Գրել սկրիպտ, որը կորոշի տրված 2 թվերից մեծագույնը և կարտածի։
+
+    // 9.sh
+    num1=15
+    num2=22
+
+    if [ "$num1" -gt "$num2" ]; then
+        echo "The largest number is: $num1"
+    else
+        echo "The largest number is: $num2"
+    fi
+
+    // -gt >
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ ./9.sh
+        The largest number is: 22
+
+
+10. Գրել սկրիպտ, որը կորոշի տրված թիվը զույգ է, թե կենտ։ Արտածել համապատասխան
+հաղորդագրություն։
+
+    // 10.sh
+
+    number=17
+
+    if [ $((number % 2)) -eq 0 ]; then
+        echo "$number is even."
+    else
+        echo "$number is odd."
+    fi
+
+    // -eq ==
+
+    
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab5
+    $ ./10.sh
+        17 is odd.

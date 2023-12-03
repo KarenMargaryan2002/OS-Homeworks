@@ -1,0 +1,239 @@
+Լաբորատոր աշխատանք 7
+Առաջադրանքներ
+
+1. Գրել ծրագիր, որը կարտածի [0, 20] միջակայքի զույգ թվերը։ Օգտագործել while ցիկլ։
+
+    // 1.sh
+    #!/bin/bash
+
+    count=0
+    while [ $count -le 20 ]; do
+        echo $count
+        count=$((count + 2))
+    done
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab7
+    $ ./1.sh
+        0
+        2
+        4
+        6
+        8
+        10
+        12
+        14
+        16
+        18
+        20
+
+
+2. Կատարել 1-ին առաջադրանքը՝ օգտագործելով until ցիկլ։
+
+    // 2.sh
+    #!/bin/bash
+    number=0
+    until [ $number -gt 20 ]; do
+        echo $number
+        number=$((number + 2))
+    done
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab7
+    $ ./2.sh
+        0
+        2
+        4
+        6
+        8
+        10
+        12
+        14
+        16
+        18
+        20
+
+3. Գրել ծրագիր, որը գտնվում է անվերջ ցիկլի մեջ։ Ցիկլի յուրաքանչյուր իտերացիայում
+արտածել տվյալ ինդեքսի քառակուսին։ Ցիկլը ավարտել այն պահին, երբ արտածվող
+թիվը կգերազանցի 1000։ Օգտագործել while ցիկլ։
+    
+    // 3.sh
+    #!/bin/bash
+    index=1
+    while true; do
+        square=$((index * index))
+        echo $square
+        if [ $square -gt 1000 ]; then
+            break
+        fi
+        index=$((index + 1))
+    done
+
+
+4. Կատարել 1-ին առաջադրանքը՝ օգտագործելով for ցիկլ։
+
+    // 4.sh
+    #!/bin/bash
+    for ((number=0; number<=20; number+=2)); do
+        echo $number
+    done
+
+
+5. Գրել ծրագիր, որը որպես մուտքային տվյալ կստանա ամբողջ թիվ և կարտածի դրա
+կրկնապատիկը։ Ծրագիրը սկսելիս ցուցադրել հետևյալ հաղորդագրությունը․
+Enter an integer number, or enter q to quit:
+Ամբողջ թիվ մուտքագրելուց հետո ցուցադրել դրա կրկնապատիկը, և կրկին ցուցադրել
+հաղորդագրությունը՝ մինչև q տառի սեղմումը։
+
+    // 5.sh
+    #!/bin/bash
+    while true; do
+        echo "Enter an integer number, or enter q to quit:"
+        read input
+        if [ "$input" == "q" ]; then
+            break
+        fi
+        
+        if [[ ! $input =~ ^[0-9]+$ ]]; then
+            echo "Invalid input. Please enter an integer."
+            continue
+        fi
+        double=$((input * 2))
+        echo "Double: $double"
+    done
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab7
+    $ ./5.sh
+        Enter an integer number, or enter q to quit:
+        5
+        Double: 10
+        Enter an integer number, or enter q to quit:
+        15
+        Double: 30
+        Enter an integer number, or enter q to quit:
+        q
+
+
+6. Գրել ծրագիր, որը կստեղծի /home/student դիրեկտորիայի տեքստային ֆայլերի
+անունները պարունակող ֆայլ։ while ցիկլի միջոցով համարակալել այս ֆայլերի
+անունները և արտածել։
+
+    // 6.sh
+    #!/bin/bash
+
+    # Create a file containing the names of text files
+    ls ~/Desktop/lab7/*.sh > file_names.txt
+
+    # Number the filenames and print them using a while loop
+    count=1
+    while read -r filename; do
+        echo "File $count: $filename"
+        count=$((count + 1))
+    done < file_names.txt
+
+    // ~/Desktop/lab7/ դիրեկտորիայի համար եմ արել 
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab7
+    $ ./6.sh
+        File 1: /c/Users/karen/Desktop/lab7/1.sh
+        File 2: /c/Users/karen/Desktop/lab7/10.sh
+        File 3: /c/Users/karen/Desktop/lab7/2.sh
+        File 4: /c/Users/karen/Desktop/lab7/3.sh
+        File 5: /c/Users/karen/Desktop/lab7/4.sh
+        File 6: /c/Users/karen/Desktop/lab7/5.sh
+        File 7: /c/Users/karen/Desktop/lab7/6.sh
+        File 8: /c/Users/karen/Desktop/lab7/7.sh
+        File 9: /c/Users/karen/Desktop/lab7/8.sh
+        File 10: /c/Users/karen/Desktop/lab7/9.sh
+
+
+
+7. Գրել ծրագիր, որը for ցիկլի միջոցով կարտածի [0, 30] միջակայքում գտնվող 3-ի
+բազմապատիկ թվերը։
+
+    // 7.sh
+    #!/bin/bash
+    for ((i=0; i<=30; i+=3)); do
+        echo $i
+    done
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab7
+    $ ./7.sh
+        0
+        3
+        6
+        9
+        12
+        15
+        18
+        21
+        24
+        27
+        30
+
+
+8. Գրել ծրագիր, որը for ցիկլի միջոցով կարտածի ընթացիկ դիրեկտորիայի բոլոր
+տեքստային ֆայլերի անունները։
+
+    // 8.sh
+    #!/bin/bash
+    for file in *.txt; do
+        echo $file
+    done
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab7
+    $ ./8.sh
+        file_names.txt
+
+
+9. Գրել ծրագիր, որը որպես արգումենտ կստանա ֆայլերի անուններ, և այդ ֆայլերից
+յուրաքանչյուրի համար կարտածի ֆայլի ամենակարճ բառը և դրա երկարությունը։
+
+    // 9.sh
+    #!/bin/bash
+
+    for file in "$@"; do
+        if [[ -r $file ]]; then
+            shortest=""
+            length=9999
+            while read -r word; do
+                if (( ${#word} < length && ${#word}!=0)); then
+                    shortest=$word
+                    length=${#word}
+                fi
+            done < "$file"
+            echo "File: $file | Shortest word: '$shortest' | Length: $length"
+        else
+            echo "$file: File not readable"
+        fi
+    done
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab7
+    $ ./9.sh 4.sh 2.sh 6.sh
+        File: 4.sh | Shortest word: 'done' | Length: 4
+        File: 2.sh | Shortest word: 'done' | Length: 4
+        File: 6.sh | Shortest word: 'count=1' | Length: 7
+
+
+10. Գրել ծրագիր, որը որպես արգումենտներ կստանա ֆայլերի անուններ, և դրանցից
+յուրաքանչյուրի համար կստուգի, թե արդյո՞ք տվյալ ֆայլը գոյություն ունի, թե ոչ։
+Գոյություն ունենալու դեպքում ստուգել, թե արդյո՞ք ֆայլն ունի կարդալու
+թույլտվություն։ Արտածել համապատասխան հաղորդագրություններ։
+
+    // 10.sh
+    #!/bin/bash
+    for file in "$@"; do
+        if [ -e "$file" ]; then
+            if [ -r "$file" ]; then
+                echo "$file: File exists and is readable."
+            else
+                echo "$file: File exists but is not readable."
+            fi
+        else
+            echo "$file: File does not exist."
+        fi
+    done
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab7
+    $ ./10.sh file_names.txt 15.sh 2.sh
+        file_names.txt: File exists and is readable.
+        15.sh: File does not exist.
+        2.sh: File exists and is readable.

@@ -1,0 +1,10 @@
+/c/Users/karen/Desktop/lab7/1.sh
+/c/Users/karen/Desktop/lab7/10.sh
+/c/Users/karen/Desktop/lab7/2.sh
+/c/Users/karen/Desktop/lab7/3.sh
+/c/Users/karen/Desktop/lab7/4.sh
+/c/Users/karen/Desktop/lab7/5.sh
+/c/Users/karen/Desktop/lab7/6.sh
+/c/Users/karen/Desktop/lab7/7.sh
+/c/Users/karen/Desktop/lab7/8.sh
+/c/Users/karen/Desktop/lab7/9.sh

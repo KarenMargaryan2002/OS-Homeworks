@@ -1,0 +1,286 @@
+Լաբորատոր աշխատանք 8
+Առաջադրանքներ
+
+
+1. Գրել ծրագիր, որը ինտերակտիվ ռեժիմում կստանա [0, 3] միջակայքի որեւէ թիվ, եւ
+արգումենտի արժեքից կախված կկատարի հետեւյալ գործողությունները.
+ 0 – ավարտել ծրագիրը։
+ 1 – արտածել /home/student դիրեկտորիայի ֆայլերի ցուցակը։
+ 2 – արտածել /home/student դիրեկտորիայի տեքստային ֆայլերի քանակը։
+ 3 – արտածել աշխատանքային դիրեկտորիան։
+Գործողությունները կրկնել մինչեւ 0 արժեքի ներմուծումը։ Օգտագործել case օպերատոր։
+
+    // 1.sh
+    #!/bin/bash
+
+    while true; do
+        echo "Please Select [0-3] or 0 to Quit"
+        read -p "Enter selection [0-3] > "
+        
+        case $REPLY in
+            0)
+                echo "Program terminated."
+                exit
+                ;;
+            1)
+                echo "Copying list of files in /home/student directory."
+                cp /home/student/* .
+                ;;
+            2)
+                echo "Number of text files in /home/student directory: $(ls -l /home/student/*.txt | wc -l)"
+                ;;
+            3)
+                echo "Working directory: $(pwd)"
+                ;;
+            *)
+                echo "Invalid entry" >&2
+                ;;
+        esac
+    done
+
+
+2. Գրել ծրագիր, որը որպես արգումենտ կստանա տարվա ամսի անունը եւ կվերադարձնի
+տվյալ ամսում առկա օրերի քանակը։ Օգտագործել case օպերատոր։
+
+    // 2.sh
+    #!/bin/bash
+
+    read -p "Enter the name of the month: " month
+
+    case $month in
+        "January" | "March" | "May" | "July" | "August" | "October" | "December")
+            echo "31 days"
+            ;;
+        "April" | "June" | "September" | "November")
+            echo "30 days"
+            ;;
+        "February")
+            echo "28 or 29 days"
+            ;;
+        *)
+            echo "Invalid month"
+            ;;
+    esac
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab8
+    $ ./2.sh
+        Enter the name of the month: January
+        31 days
+
+3. Գրել <<Հաշվիչ>> ծրագիր, որը կստանա ճիշտ 3 արժեք հետեւյալ հաջորդականությամբ.
+թիվ, գործողություն, թիվ։ Օր՝ 2 + 3։ Արժեքները ներմուծել ինտերակտիվ ռեժիմում (read
+հրամանի միջոցով)։ Գործողության համար սահմանել հետեւյալ ընդունելի արժեքները. + -
+* / **։ Արտածել գործողության արդյունքը։ Գործողության տիպը որոշելու համար
+օգտագործել case օպերատոր։
+
+    // 3.sh
+    #!/bin/bash
+
+    read -p "Enter the first number: " num1
+    read -p "Enter the operation (+, -, *, /, **): " operation
+    read -p "Enter the second number: " num2
+
+    case $operation in
+        "+")
+            result=$((num1 + num2))
+            ;;
+        "-")
+            result=$((num1 - num2))
+            ;;
+        "*")
+            result=$((num1 * num2))
+            ;;
+        "/")
+            result=$((num1 / num2))
+            ;;
+        "**")
+            result=$((num1 ** num2))
+            ;;
+        *)
+            echo "Invalid operation"
+            exit 1
+            ;;
+    esac
+
+    echo "Result: $result"
+
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab8
+    $ ./3.sh
+        Enter the first number: 12
+        Enter the operation (+, -, *, /, **): *
+        Enter the second number: 3
+        Result: 36
+
+4. Գրել ծրագիր, որը որպես հրամանային տողի արգումենտ կստանա ֆայլի անուն։ Եթե
+ֆայլը գոյություն ունի եւ ունի կարդալու թույլտվություն, ապա արտածել ֆայլի
+պարունակությունը, հակառակ դեպքում արտածել համապատասխան
+հաղորդագրություն։
+
+    // 4.sh
+    #!/bin/bash
+
+    # Check if a file name is provided
+    if [[ -z "$1" ]]; then
+        echo "Error: Please provide a file name as an argument."
+        exit 1
+    fi
+
+    # Check if the file exists
+    if [[ ! -f "$1" ]]; then
+        echo "Error: File '$1' does not exist."
+        exit 1
+    fi
+
+    # Check if the file is readable
+    if [[ ! -r "$1" ]]; then
+        echo "Error: File '$1' is not readable."
+        exit 1
+    fi
+
+    # File exists and is readable, copy the content
+    cat "$1"
+
+    echo "File content copied successfully."
+
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab8
+    $ ./4.sh file.txt
+        Barev
+        Barev
+        bareevvvv
+        File content copied successfully.
+
+5. Գրել cp ծրագրի պատճենը՝ առանց cp հրամանից օգտվելու։ Ծրագիրը պետք է որպես
+արգումենտներ ստանա 2 ֆայլերի անուններ, եւ պատճենի առաջին ֆայլի
+պարունակությունը 2-րդի մեջ։ Իրականացնել ծրագրի պատշաճ աշխատանքի համար
+հարկավոր ստուգումներ (ֆայլը գոյություն ունի, ունի կարդալու թույլտվություն)։
+
+    // 5.sh
+    #!/bin/bash
+
+    if [ $# -ne 2 ]; then
+        echo "Usage: $0 <source_file> <destination_file>"
+        exit 1
+    fi
+
+    source_file=$1
+    destination_file=$2
+
+    if [ -e "$source_file" ] && [ -r "$source_file" ]; then
+        while IFS= read -r line; do
+            echo "$line" >> "$destination_file"
+        done < "$source_file"
+        echo "File copied successfully."
+    else
+        echo "Source file does not exist or doesn't have read permission."
+    fi
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab8
+    $ ./5.sh 5.sh 6.sh
+        File copied successfully.
+
+6. Գրել ծրագիր, որը որպես հրամանային տողի արգումենտներ կստանա 2 թիվ եւ կարտածի
+այդ թվերի գումարը։ Իրականացնել արժեքների վավերացում։
+
+    // 6.sh
+    #!/bin/bash
+
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: $0 <number1> <number2>"
+        exit 1
+    fi
+
+    num1=$1
+    num2=$2
+
+    if ! [[ $num1 =~ ^[0-9]+$ && $num2 =~ ^[0-9]+$ ]]; then
+        echo "Invalid input. Please enter numeric values."
+        exit 1
+    fi
+
+    sum=$((num1 + num2))
+    echo "Sum: $sum"
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab8
+    $ ./6.sh 7 6
+        Sum: 13
+
+
+7. Գրել ծրագիր, որը որպես հրամանային տողի արգումենտներ կստանա կամայական
+քանակով արժեքներ եւ նույնությամբ կարտածի այդ արժեքները։ Օգտագործել while ցիկլ
+եւ shift օպերատոր։
+
+    // 7.sh
+    #!/bin/bash
+
+    while [ "$#" -gt 0 ]; do
+        echo "Argument: $1"
+        shift
+    done
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab8
+    $ ./7.sh 1 2 356    
+        Argument: 1
+        Argument: 2
+        Argument: 356
+
+
+8. Իրականացնել 7-րդ կետը՝ օգտագործելով for ցիկլ եւ $@ հատուկ փոփոխականը։
+
+    // 8.sh
+    #!/bin/bash
+
+    for argument in "$@"; do
+        echo "Argument: $argument"
+    done
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab8
+    $ ./8.sh 1 12 3 
+        Argument: 1
+        Argument: 12
+        Argument: 3
+
+
+9. Գրել ծրագիր, որը որպես հրամանային տողի արգումենտներ կստանա կամայական
+քանակով թվեր եւ կարտածի այդ թվերի գումարը։
+
+    // 9.sh
+    #!/bin/bash
+
+    sum=0
+
+    for arg in "$@"; do
+        if [[ "$arg" =~ ^[0-9]+$ ]]; then
+            sum=$((sum + arg))
+        fi
+    done
+
+    echo "Sum of the numbers: $sum"
+
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab8
+    $ ./9.sh 1 2 3 6
+        Sum of the numbers: 12
+
+
+10. Գրել ծրագիր, որը որպես հրամանային տողի արգումենտներ կստանա կամայական
+քանակով թվեր եւ կարտածի զույգ թվերի քանակը։
+
+    // 10.sh
+    #!/bin/bash
+
+    count=0
+
+    for arg in "$@"; do
+        if [[ "$arg" =~ ^[0-9]+$ && $((arg % 2)) -eq 0 ]]; then
+            count=$((count + 1))
+        fi
+    done
+
+    echo "Number of even numbers: $count"
+
+
+    Karen@DESKTOP-Q2Q7R7J MINGW64 ~/Desktop/lab8
+    $ ./10.sh 1 5 2 3 6
+        Number of even numbers: 2
